@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.util.Random;
@@ -33,9 +32,9 @@ public class Controller {
     @FXML
     public void initialize() {
         // Initialize the random number and reset the guess counter
-    	setFocusListeners();
-        generateRandomNumber();
-        numberOfGuesses = 0;
+        setFocusListeners(); // Set up listeners for mouse enter and exit events
+        generateRandomNumber(); // Generate a random number for the game
+        numberOfGuesses = 0; // Initialize guess counter
     }
 
     private void generateRandomNumber() {
@@ -43,7 +42,7 @@ public class Controller {
         Random random = new Random();
         randomNumber = random.nextInt(100) + 1;
     }
-    
+
     private void setFocusListeners() {
         // Set focus listeners for the inputField
         inputField.setOnMouseEntered(e -> inputField.setStyle("-fx-border-color: #7EBCE9;")); // Highlight on mouse enter
@@ -52,9 +51,7 @@ public class Controller {
         // Set focus listeners for the submit button
         submit.setOnMouseEntered(e -> submit.setStyle("-fx-border-color: #7EBCE9;")); // Highlight on mouse enter
         submit.setOnMouseExited(e -> submit.setStyle("-fx-border-color: null;")); // Remove highlight on mouse exit
-        
     }
-
 
     @FXML
     void clkBtn(ActionEvent event) {
